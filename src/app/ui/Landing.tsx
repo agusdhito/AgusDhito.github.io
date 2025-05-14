@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Divider, Grid2, Typography, Box, Container, Button, List, ListItem, IconButton, Collapse, createTheme } from "@mui/material"
-import landingLogo from "./public/landing-new.jpg"
+import landingLogo from "@public/landing-new.jpg"
 import { useEffect, useState, useRef } from "react";
 import { Rect, useRect } from "react-use-rect";
 import { relative } from "path";
