@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Divider, Grid2, Typography, Box, Container, Button, List, ListItem, IconButton, Collapse, createTheme } from "@mui/material"
-import landingLogo from "@public/landing-new.jpg"
+// import landingLogo from "/landing-new.jpg"
 import { useEffect, useState, useRef } from "react";
 import { Rect, useRect } from "react-use-rect";
 import { relative } from "path";
@@ -112,7 +112,7 @@ function Landing() {
                 >
                 <span className="w-full" style={{ visibility: "hidden" }}>
                     {/* {source[currentItemIndex]} */}
-                    <Image src={`/${source[currentItemIndex]}`} alt={source[currentItemIndex]} width={150} height={150}/>
+                    <img src={`/${source[currentItemIndex]}`} alt={source[currentItemIndex]} width={150} height={150}/>
                 </span>
                 {source.map((text, index) => (
                     <span
@@ -130,13 +130,14 @@ function Landing() {
                         transition: "all 1s ease-in-out",
                     }}
                     >
-                        <Image src={`/${text}`} alt={text} width={150} height={150}/>
+                        <img src={`/${text}`} alt={text} width={150} height={150}/>
                     </span>
                 ))}
             </div>
         );
     };
 
+    // console.log(landingLogo)
 
     return (
         <>
@@ -167,12 +168,17 @@ function Landing() {
                   // backgroundColor: "black"
                 }}
                 >
-                  <Box style={{ position: "relative", display: "inline-block" }}>
-                    <Image
-                      src={landingLogo}
-                      alt="Landing page"
-                      className="w-full h-auto"
-                    />
+                  <Box style={{ height:"100%", width: "100%" ,position: "relative", display: "inline-block" }}>
+                    <Box
+                    className="w-full h-auto"
+                    >
+                      <img
+                        // src={landingLogo}
+                        src={"/landing-new.jpg"}
+                        alt="Landing page"
+                        className="w-auto h-auto"
+                      />
+                    </Box>
 
                     <Box
                       style={{
@@ -380,7 +386,7 @@ function Landing() {
                         <div className="flex justify-center items-center mx-16">
                             {slidePictures.map((logo) => (
                                 <div className="p-2 logo">
-                                    <Image src={`/${logo}`} alt={logo} width={100} height={100} className="logo"/>
+                                    <img src={`/${logo}`} alt={logo} width={100} height={100} className="logo"/>
                                 </div>
                             ))}
                         </div>

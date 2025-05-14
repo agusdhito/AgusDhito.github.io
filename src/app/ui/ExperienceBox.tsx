@@ -28,10 +28,10 @@ export function ExperienceBox(props: { imageSrc: string, title: string, descript
                     backgroundColor: "white",
                 }}
                 >
-                    <Image
+                    <img
                     src={`/${[props.imageSrc]}`}
                     alt={props.title}
-                    fill={true}
+                    className="w-auto h-auto"
                     />
                 </Box>
 
