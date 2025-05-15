@@ -168,30 +168,34 @@ function Landing() {
                   // backgroundColor: "black"
                 }}
                 >
-                  <Box style={{ height:"100%", width: "100%" ,position: "relative", display: "inline-block" }}>
-                    <Box
-                    className="w-full h-auto"
-                    >
-                      <img
-                        // src={landingLogo}
-                        src={"/landing-new.jpg"}
-                        alt="Landing page"
-                        className="w-auto h-auto"
-                      />
-                    </Box>
+                  <Box style={{
+                    height: "80%",
+                    width: "80%",
+                    position: "relative",
+                    marginTop: 32,
+                     }}>
+                    <img
+                      // src={landingLogo}
+                      src={"/landing-new.jpg"}
+                      alt="Landing page"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover"
+                      }}
+                    />
 
                     <Box
                       style={{
                         position: "absolute",
-                        top: 10, // Moves it downward
-                        left: 10, // Moves it rightward
-                        width: "calc(100% + 20px)", // Slightly larger than the image
-                        height: "calc(100% + 20px)", // Slightly larger than the image
+                        top: 32, // Moves it downward
+                        left: 32, // Moves it rightward
+                        width: "100%",
+                        height: "100%",
                         backgroundColor: "white",
-                        // border: "5px solid lightgray", // Adds a border effect
+                        // border: "5px solid lightgray",
                         zIndex: -1, // Places it behind the image
                       }}
-                      className="frame-box"
                     />
                   </Box>
 
@@ -386,7 +390,7 @@ function Landing() {
                         <div className="flex justify-center items-center mx-16">
                             {slidePictures.map((logo) => (
                                 <div className="p-2 logo">
-                                    <img src={`/${logo}`} alt={logo} width={100} height={100} className="logo"/>
+                                    <img src={`/${logo}`} alt={logo} width={200} height={200} className="logo"/>
                                 </div>
                             ))}
                         </div>
