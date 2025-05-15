@@ -14,8 +14,8 @@ export function ExperienceBox(props: { imageSrc: string, title: string, descript
                 // display: "flex",
                 // flexDirection: "row-reverse",
                 width: "100%",
-                height: "300px",
-                margin: "32px",
+                height: "auto",
+                margin: "16px",
 
             }}
             >
@@ -41,9 +41,6 @@ export function ExperienceBox(props: { imageSrc: string, title: string, descript
                     margin: "4px",
                     backgroundColor: "white",
                     width: "70%",
-                    position: "absolute",
-                    left: "150px",
-                    top: "125px",
                     textAlign: "justify",
                 }}
                 >
