@@ -27,8 +27,22 @@ body {
   font-family: cursive, sans-serif;
 }
 
-typography {
-  font-family: cursive, sans-serif;
+/* Apply fonts to specific elements for fallback */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+}
+
+body,
+p,
+span,
+div,
+button {
+  font-family: var(--font-opensans), "Open Sans", sans-serif;
 }
 
 .logo {
@@ -47,6 +61,7 @@ typography {
   /* display: inline-block; */
   font-size: 30px;
 }
+
 /* img {
   object-fit: fill;
   width: 10px;
