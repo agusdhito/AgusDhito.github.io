@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react';
-import { Box, Typography, Container, Paper } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import { Box, Typography, Container, Paper, useTheme, useMediaQuery } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
 
 interface Experience {
@@ -10,10 +10,20 @@ interface Experience {
   description: string;
 }
 
-export default function Timeline({ experiences }: { experiences: Experience[] }) {
+interface TimelineProps {
+  experiences: Experience[];
+}
+
+const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
+  const theme = useTheme();
   const [progress, setProgress] = useState(0);
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isNearBottom, setIsNearBottom] = useState(false);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const isEven = (index: number) => {
+    if (isMobile) return true; // On mobile, always show items
+    return isEven(index);
+  };
 
   // Track scroll position with improved calculation
   useEffect(() => {
@@ -100,7 +110,7 @@ export default function Timeline({ experiences }: { experiences: Experience[] })
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 8 }}>
+    <Container maxWidth="md" sx={{ py: 2 }}>
       <Box
         ref={timelineRef}
         sx={{
@@ -159,12 +169,19 @@ function TimelineItem({
   // Combine scroll-based visibility with intersection detection
   const effectiveVisibility = inView ? Math.max(0.3, visibility) : visibility;
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const isEven = (index: number) => {
+    if (isMobile) return true; // On mobile, always show items
+    return index % 2 === 0;
+  };
+
   return (
     <Box
       ref={ref}
       sx={{
         display: 'flex',
-        flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
+        flexDirection: { xs: 'column', md: isEven(index) ? 'row' : 'row-reverse' },
         mb: 8, // Increased spacing between items
         opacity: effectiveVisibility,
         transform: `translateY(${(1 - effectiveVisibility) * 20}px)`,
@@ -177,14 +194,19 @@ function TimelineItem({
       <Box
         sx={{
           width: { xs: 'auto', md: '42%' },
-          textAlign: { xs: 'left', md: index % 2 === 0 ? 'right' : 'left' },
-          pr: { xs: 0, md: index % 2 === 0 ? 3 : 0 },
-          pl: { xs: 0, md: index % 2 === 0 ? 0 : 3 },
+          textAlign: { xs: 'left', md: isEven(index) ? 'right' : 'left' },
+          pr: { xs: 0, md: isEven(index) ? 3 : 0 },
+          pl: { xs: 0, md: isEven(index) ? 0 : 3 },
           ml: { xs: '40px', md: 0 },
           position: 'relative',
         }}
       >
-        <Typography variant="h6" color="primary">
+        <Typography variant="h6" color="primary"
+          sx={{
+            "position": "relative",
+            [isEven(index) ? 'right' : 'left']: { xs: '-24px', md: '6px' },
+          }}
+        >
           {experience.time}
         </Typography>
 
@@ -193,7 +215,7 @@ function TimelineItem({
           sx={{
             position: 'absolute',
             top: '8px',
-            [index % 2 === 0 ? 'right' : 'left']: { xs: 'auto', md: '-12px' },
+            [isEven(index) ? 'right' : 'left']: { xs: 'auto', md: '-12px' },
             width: '16px',
             height: '16px',
             borderRadius: '50%',
@@ -220,7 +242,7 @@ function TimelineItem({
           transition: 'background-color 0.6s ease',
           transform: {
             xs: 'none',
-            md: `translateX(${(1 - effectiveVisibility) * (index % 2 === 0 ? -20 : 20)}px)`
+            md: `translateX(${(1 - effectiveVisibility) * (isEven(index) ? -20 : 20)}px)`
           },
           position: 'relative',
           zIndex: 2,
@@ -236,3 +258,5 @@ function TimelineItem({
     </Box>
   );
 }
+
+export default Timeline;

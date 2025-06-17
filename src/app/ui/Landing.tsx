@@ -1,11 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { Divider, Grid2, Typography, Box, Container, Button, List, ListItem, IconButton, Collapse, createTheme } from "@mui/material"
-// import landingLogo from "/landing-new.jpg"
-import { useEffect, useState, useRef } from "react";
+import { Divider, Typography, Box, Container, Button, List, ListItem, IconButton, Collapse, createTheme, useMediaQuery } from "@mui/material"
+import { useEffect, useState } from "react";
 import { Rect, useRect } from "react-use-rect";
-import { relative } from "path";
 import Link from "next/link";
 import {
   Widgets,
@@ -21,7 +19,6 @@ import {
 import { WorkingExperiences } from "@/app/data/data";
 import experiencesData from '@/app/data/experience_timeline.json';
 import { ExperienceBox } from "@/app/ui/ExperienceBox";
-import zIndex from "@mui/material/styles/zIndex";
 import { ThemeProvider } from "@emotion/react";
 import Timeline from '@/app/ui/Timeline';
 
@@ -32,12 +29,25 @@ const theme = createTheme({
       'sans-serif',
     ].join(','),
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 })
+
 function Landing() {
   const mock = ["Engineering Manager", "Backend Engineer", "Frontend Engineer", "Guitarist", "Music Producer"];
   const slidePictures = ["golang.png", "ruby-on-rails.png", "java.png", "postgresql.png", "redis.png", "react.png", "typescript.png", "docker.png", "kubernetes.png", "gcp.png"];
 
-  const [detailsOpen, setDetailsOpen] = useState(false)
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+
   const SlideText = ({ source }: { source: string[] }) => {
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [rect, setRect] = useState<Rect | null>(null);
@@ -45,7 +55,6 @@ function Landing() {
 
     useEffect(() => {
       const interval = setInterval(() => {
-        // console.log(rect?.width);
         setCurrentItemIndex((index) =>
           index === source.length - 1 ? 0 : index + 1
         );
@@ -57,7 +66,7 @@ function Landing() {
       <div
         style={{
           display: "inline-flex",
-          overflow: "hidden", // untuk biar di ada di bawah
+          overflow: "hidden",
           position: "relative",
           width: `${rect?.width}px`,
           transition: "all 0.5s ease-in-out",
@@ -66,16 +75,13 @@ function Landing() {
         <span className="w-full" style={{ visibility: "hidden" }}>{source[currentItemIndex]}</span>
         {source.map((text, index) => (
           <span
+            key={text}
             className="w-full"
             ref={currentItemIndex === index ? rectRef : null}
             style={{
               position: "absolute",
-              // top: (rect?.height ?? 0) * 2,
               left: (rect?.width ?? 0) * 2,
-              // transform: `translateY(${
-              // currentItemIndex === index ? `-${(rect?.height ?? 0) * 2}px` : 0
-              transform: `translateX(${currentItemIndex === index ? `-${(rect?.width ?? 0) * 2}px` : 0
-                })`,
+              transform: `translateX(${currentItemIndex === index ? `-${(rect?.width ?? 0) * 2}px` : 0})`,
               transition: "all 1s ease-in-out",
             }}
           >
@@ -93,11 +99,10 @@ function Landing() {
 
     useEffect(() => {
       const interval = setInterval(() => {
-        console.log(rect?.width);
         setCurrentItemIndex((index) =>
           index === source.length - 1 ? 0 : index + 1
         );
-      }, 3000); // interval untuk ngelamain transisinya
+      }, 3000);
       return () => clearInterval(interval);
     }, [currentItemIndex, source]);
 
@@ -105,28 +110,24 @@ function Landing() {
       <div
         style={{
           display: "inline-flex",
-          overflow: "hidden", // untuk biar di ada di bawah
+          overflow: "hidden",
           position: "relative",
           width: `${rect?.width}px`,
           transition: "all 0.5s ease-in-out",
         }}
       >
         <span className="w-full" style={{ visibility: "hidden" }}>
-          {/* {source[currentItemIndex]} */}
           <img src={`/${source[currentItemIndex]}`} alt={source[currentItemIndex]} width={150} height={150} />
         </span>
         {source.map((text, index) => (
           <span
+            key={text}
             className="w-full"
             ref={currentItemIndex === index ? rectRef : null}
             style={{
               position: "absolute",
-              // top: (rect?.height ?? 0) * 2,
               left: (rect?.width ?? 0) * 2,
-              // transform: `translateY(${
-              // currentItemIndex === index ? `-${(rect?.height ?? 0) * 2}px` : 0
-              transform: `translateX(${currentItemIndex === index ? `-${(rect?.width ?? 0) * 2}px` : 0
-                })`,
+              transform: `translateX(${currentItemIndex === index ? `-${(rect?.width ?? 0) * 2}px` : 0})`,
               transition: "all 1s ease-in-out",
             }}
           >
@@ -137,80 +138,95 @@ function Landing() {
     );
   };
 
-  // console.log(landingLogo)
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <Container
           maxWidth="xl"
-          style={{
-            minHeight: "90vh",
-            // padding: "0px",
+          sx={{
+            minHeight: { xs: 'auto', md: '90vh' },
             position: "relative",
-            display: "inline-flex"
+            padding: { xs: 2, sm: 3, md: 4 }
           }}
           className="h-auto"
         >
           <Box
-            style={{
+            sx={{
               backgroundColor: "lightblue",
-              display: "inline-flex",
-              zIndex: 1
+              display: "flex",
+              flexDirection: { xs: 'column', md: 'row' },
+              zIndex: 1,
+              padding: { xs: 2, sm: 3 }
             }}
           >
             <Box
-              style={{
-                width: "50%",
+              sx={{
+                width: { xs: '100%', md: '50%' },
                 height: "100%",
                 padding: "8px",
                 margin: "8px",
-                // backgroundColor: "black"
+                display: 'flex',
+                justifyContent: 'center'
               }}
             >
-              <Box style={{
-                height: "80%",
-                width: "80%",
+              <Box sx={{
                 position: "relative",
-                marginTop: 32,
+                width: { xs: '90%', sm: '85%', md: '80%' },
+                aspectRatio: '3/4',
+                // maxHeight: { xs: '300px', sm: '400px', md: '500px', lg: '600px' },
+                marginTop: { xs: 2, md: 4 },
               }}>
+                {/* Main image */}
                 <img
-                  // src={landingLogo}
                   src={"/landing-new.jpg"}
                   alt="Landing page"
                   style={{
-                    height: "100%",
                     width: "100%",
-                    objectFit: "cover"
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    position: "relative",
+                    zIndex: 1
                   }}
                 />
 
+                {/* Right frame */}
                 <Box
-                  style={{
+                  sx={{
                     position: "absolute",
-                    top: 32, // Moves it downward
-                    left: 32, // Moves it rightward
-                    width: "100%",
+                    top: 0,
+                    right: { xs: -8, sm: -12, md: -16 },
+                    width: { xs: 8, sm: 12, md: 16 },
                     height: "100%",
                     backgroundColor: "white",
-                    // border: "5px solid lightgray",
-                    zIndex: -1, // Places it behind the image
+                    zIndex: 0
+                  }}
+                />
+
+                {/* Bottom frame */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: { xs: -8, sm: -12, md: -16 },
+                    left: 0,
+                    width: "100%",
+                    height: { xs: 8, sm: 12, md: 16 },
+                    backgroundColor: "white",
+                    zIndex: 0
                   }}
                 />
               </Box>
-
             </Box>
 
             <Box
               sx={{
-                margin: "4px",
-                textAlign: "right",
-                width: "50%",
-                padding: "32px",
+                margin: { xs: "8px", md: "4px" },
+                textAlign: { xs: "center", md: "right" },
+                width: { xs: '100%', md: '50%' },
+                padding: { xs: 2, md: 4 }
               }}
             >
-
-              <Typography variant="h3">
+              <Typography variant={isMobile ? "h4" : "h3"}>
                 Agustinus Ardhito Vedoputro
               </Typography>
 
@@ -219,13 +235,12 @@ function Landing() {
                 Hello everyone, nice to meet you! I'm a
               </Typography>
               <br />
-              {/* <Typography variant="h5"> */}
               <SlideText source={mock} />
-              {/* </Typography> */}
 
               <Typography
                 sx={{
-                  fontStyle: "italic"
+                  fontStyle: "italic",
+                  mt: 2
                 }}
               >
                 (See full of what I do) :
@@ -255,51 +270,43 @@ function Landing() {
                 </List>
               </Collapse>
 
-
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "right",
+                  justifyContent: { xs: "center", md: "flex-end" },
+                  mt: 2
                 }}
               >
                 <div className="size-8">
                   <Link href="https://www.linkedin.com/in/agustinus-ardhito">
                     <Button>
-                      <LinkedIn></LinkedIn>
+                      <LinkedIn />
                     </Button>
                   </Link>
                 </div>
                 <div className="size-8 mx-2">
-                  <Link
-                    href="mailto:agusdhito@gmail.com"
-                  >
+                  <Link href="mailto:agusdhito@gmail.com">
                     <Button>
-                      <Mail></Mail>
+                      <Mail />
                     </Button>
                   </Link>
                 </div>
-
                 <div className="size-8">
                   <Link href="https://github.com/AgusDhito">
-                    <Button
-                      style={{ width: "100%" }}
-                    >
-                      <GitHub></GitHub>
+                    <Button style={{ width: "100%" }}>
+                      <GitHub />
                     </Button>
                   </Link>
                 </div>
               </Box>
             </Box>
           </Box>
-
         </Container>
 
-        <Container
-          maxWidth="xl"
-        >
+        <Container maxWidth="xl">
           {/*  Services I offer */}
           <div
-            className="p-8 text-center"
+            className="p-4 md:p-8 text-center"
             style={{
               backgroundColor: "#a55742"
             }}
@@ -308,53 +315,37 @@ function Landing() {
               Expertises & Services
             </Typography>
 
-            <div
-              className="mx-32 p-4"
-            >
+            <div className="mx-4 md:mx-32 p-4">
               <Typography>
                 I'm a professional technologist that has extensive expertises & competencies right from discovering your business' problems & needs, to implementing web-based platform that meets start-up company standards. you can trust to start digitalizing your business.
               </Typography>
             </div>
 
 
-            <div
-              className="flex p-8"
-            >
+            <div className="flex flex-col md:flex-row p-4 md:p-8">
               {/* for the card */}
-              <div>
-                <Widgets
-                  fontSize="large"
-                />
-                <div
-                  className="p-4"
-                >
+              <div className="mb-6 md:mb-0">
+                <Widgets fontSize="large" />
+                <div className="p-4">
                   <Typography>
                     Consult for a better understanding about how technology can help solve your business' problems.
                   </Typography>
                 </div>
               </div>
 
-              <div>
-                <DeveloperModeOutlined
-                  fontSize="large"
-                />
-                <div
-                  className="p-4"
-                >
+              <div className="mb-6 md:mb-0">
+                <DeveloperModeOutlined fontSize="large" />
+                <div className="p-4">
                   <Typography>
                     Implement solutions with web-based platform, along with creative & user-friendly display to engage your customers.
                   </Typography>
                 </div>
               </div>
 
-              <div>
-                <StorageOutlined
-                  fontSize="large"
-                />
+              <div className="mb-6 md:mb-0">
+                <StorageOutlined fontSize="large" />
 
-                <div
-                  className="p-4"
-                >
+                <div className="p-4">
                   <Typography>
                     Implement the backbone system seamlessly, from database to infrastructure required, all fully-customizable & personalized only for your business characteristics.
                   </Typography>
@@ -362,14 +353,10 @@ function Landing() {
 
               </div>
 
-              <div>
-                <AlarmOutlined
-                  fontSize="large"
-                />
+              <div className="mb-6 md:mb-0">
+                <AlarmOutlined fontSize="large" />
 
-                <div
-                  className="p-4"
-                >
+                <div className="p-4">
                   <Typography>
                     Full reliable support from initial development until it received by your user's browsers. And can go further more, as needed.
                   </Typography>
@@ -387,10 +374,21 @@ function Landing() {
                 Tech stack
               </Typography>
 
-              <div className="flex justify-center items-center mx-16">
+              <div className="flex flex-wrap justify-center items-center mx-2 md:mx-16">
                 {slidePictures.map((logo) => (
-                  <div className="p-2 logo">
-                    <img src={`/${logo}`} alt={logo} width={200} height={200} className="logo" />
+                  <div key={logo} className="p-2 logo">
+                    <img
+                      src={`/${logo}`}
+                      alt={logo}
+                      style={{
+                        width: 'auto',
+                        height: 'auto',
+                        maxWidth: isMobile ? '60px' : isTablet ? '90px' : '120px', // Reduced from 80/120/180px
+                        maxHeight: isMobile ? '60px' : isTablet ? '90px' : '120px', // Added maxHeight constraint
+                        objectFit: 'contain'
+                      }}
+                      className="logo"
+                    />
                   </div>
                 ))}
               </div>
