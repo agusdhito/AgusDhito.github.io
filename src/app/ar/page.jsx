@@ -56,14 +56,14 @@ export default function ARPage() {
   return (
     <div style={{ position: 'relative', height: '100vh', width: '100vw' }}>
       {isLoading ? (
-        <div style={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          width: '100%', 
-          height: '100%', 
-          display: 'flex', 
-          justifyContent: 'center', 
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: '#000',
           color: '#fff',
