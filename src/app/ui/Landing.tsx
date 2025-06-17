@@ -199,7 +199,7 @@ function Landing() {
               }}>
                 {/* Main image */}
                 <img
-                  src={"/landing-new.jpg"}
+                  src={"/landing-new.webp"}
                   alt="Landing page"
                   style={{
                     width: "100%",
