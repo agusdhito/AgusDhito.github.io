@@ -24,10 +24,31 @@ import Timeline from '@/app/ui/Timeline';
 
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      'cursive',
-      'sans-serif',
-    ].join(','),
+    fontFamily: 'var(--font-opensans), "Open Sans", sans-serif',
+    h1: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 700,
+    },
+    h2: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 700,
+    },
+    h3: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 600,
+    },
+    h4: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 600,
+    },
+    h5: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 600,
+    },
+    h6: {
+      fontFamily: 'var(--font-montserrat), "Montserrat", sans-serif',
+      fontWeight: 600,
+    },
   },
   breakpoints: {
     values: {
