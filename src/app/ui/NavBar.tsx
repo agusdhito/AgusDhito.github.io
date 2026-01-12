@@ -15,26 +15,31 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import { getHmrRefreshHash } from 'next/dist/server/app-render/work-unit-async-storage.external';
+import { title } from 'process';
 // import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Products', 'Musics', 'Blog'];
 
 const links = [
-    // {
-    //     title: "Products",
-    //     href: "/products"
-    // },
-    {
-        title: "Musics",
-        // href: "/musics"
-        href: "https://soundcloud.com/ardhitooo"
-    },
-    {
-      // TODO : Integrate BE with wordpress
-        title: "Blog",
-        // href: "/blog"
-        href: "https://agustinusardhito.wordpress.com/"
-    },
+  // {
+  //     title: "Products",
+  //     href: "/products"
+  // },
+  {
+    title: "Musics",
+    // href: "/musics"
+    href: "https://soundcloud.com/ardhitooo"
+  },
+  {
+    // TODO : Integrate BE with wordpress
+    title: "Blog",
+    // href: "/blog"
+    href: "https://agustinusardhito.wordpress.com/"
+  },
+  {
+    title: "Resume",
+    href: "/resume"
+  }
 ]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -66,7 +71,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -109,12 +114,12 @@ function ResponsiveAppBar() {
             >
               {links.map((link) => (
                 <MenuItem key={link.title} onClick={handleCloseNavMenu}>
-                    <Link
-                        title={link.title}
-                        href={link.href}
-                    >
-                        <Typography sx={{ textAlign: 'center' }}>{link.title}</Typography>
-                    </Link>
+                  <Link
+                    title={link.title}
+                    href={link.href}
+                  >
+                    <Typography sx={{ textAlign: 'center' }}>{link.title}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -124,7 +129,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -140,19 +145,19 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {links.map((link) => (
-                <Link
-                    title={link.title}
-                    href={link.href}
-                    key={link.title}
+              <Link
+                title={link.title}
+                href={link.href}
+                key={link.title}
+              >
+                <Button
+                  key={link.title}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                    <Button
-                        key={link.title}
-                        onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', display: 'block' }}
-                    >
-                        {link.title}
-                    </Button>
-                </Link>
+                  {link.title}
+                </Button>
+              </Link>
             ))}
           </Box>
           {/* <Box sx={{ flexGrow: 0 }}>

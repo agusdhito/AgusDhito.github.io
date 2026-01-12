@@ -83,6 +83,7 @@ export default function ARPage() {
             <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
             <a-entity mindar-image-target="targetIndex: 0">
               <a-plane color="blue" opacity="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+              {/* <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.005 0.005 0.005" src="/assets/models/microphone.glb"></a-gltf-model> */}
               <a-entity
                 text="value: Hello World!; color: white; align: center;"
                 position="0 0 0.1"

@@ -1,0 +1,51 @@
+[
+  {
+    "job_title": "Engineering Manager",
+    "company": "PT. Mid Solusi Nusantara (Mekari Talenta)",
+    "date": "June 2025 - Present",
+    "logo_url": "/mekari-talenta-resume.jpeg",
+    "achievements": [
+      "Leading, managing, and mentoring 8 team members (Frontend, Backend)",
+      "Innovating best practice, increasing platform performance & reliability on Mekari Talenta with 1000+ B2B companies integration"
+    ]
+  },
+  {
+    "job_title": "Engineering Manager",
+    "company": "GovTechEdu Indonesia",
+    "date": "2022 - Dec 2024",
+    "logo_url": "/govtechedu.png",
+    "achievements": [
+      "Lead and mentor a team of 10+ engineers across multiple disciplines (Architecture, Backend, Frontend, QA)",
+      "Spearhead development of data visualization platform serving 500,000+ schools and 5+ million users",
+      "Drive technical strategy and architecture decisions for government education technology initiatives",
+      "Implement agile practices and improve team velocity by 40% through process optimization",
+      "Establish engineering best practices, code review standards, and CI/CD pipelines"
+    ]
+  },
+  {
+    "job_title": "Engineering Manager",
+    "company": "PT. Bukalapak.com",
+    "date": "2020 - 2022",
+    "logo_url": "/bukalapak.png",
+    "achievements": [
+      "Managed cross-functional team of 7+ engineers covering Backend, Frontend, Android, and iOS development",
+      "Led technical planning and execution for major product initiatives serving millions of users",
+      "Fostered engineering culture focused on quality, innovation, and continuous learning",
+      "Collaborated with product and design teams to deliver customer-centric solutions",
+      "Reduced production incidents by 60% through improved monitoring and testing practices"
+    ]
+  },
+  {
+    "job_title": "Backend Software Engineer",
+    "company": "PT. Bukalapak.com",
+    "date": "2017 - 2020",
+    "logo_url": "/bukalapak.png",
+    "achievements": [
+      "Developed and maintained core authentication and account systems handling 50,000+ RPS",
+      "Built scalable microservices architecture serving 40+ million users",
+      "Optimized database queries and caching strategies, reducing response time by 70%",
+      "Implemented security best practices including OAuth2, JWT, and multi-factor authentication",
+      "Collaborated with infrastructure team on system reliability and performance improvements"
+    ]
+  }
+]
