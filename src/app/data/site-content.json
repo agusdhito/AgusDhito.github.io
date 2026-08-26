@@ -33,7 +33,7 @@
   ],
   "keyAchievements": [
     "Scaled systems to support 5+ million daily active users with 99.9% uptime",
-    "At Bukalapak, led migration of a monolithic application to microservices architecture, cutting response times from 3-5s to 100-200ms",
+    "At Bukalapak, led migration of a monolithic application to a microservices architecture, improving scalability and enabling teams to build and deploy independently",
     "Grew and mentored 10+ software engineers across architecture, backend, frontend, and QA"
   ],
   "experiences": [
@@ -67,7 +67,7 @@
         "Spearheaded development of a data visualization platform serving 500,000+ schools and 5+ million users",
         "Designed distributed, event-driven architecture (Redis, microservices) for a high-reliability platform",
         "Drove technical strategy and architecture decisions for national government education initiatives",
-        "Improved team velocity by 40% through agile process optimization",
+        "Improved team delivery velocity through agile process optimization and clearer planning",
         "Established engineering best practices, code review standards, and CI/CD pipelines"
       ]
     },
@@ -84,7 +84,6 @@
         "Managed a cross-functional team of 7+ engineers across Backend, Frontend, Android, and iOS",
         "Drove architecture and system-design decisions for distributed, event-driven services",
         "Led technical planning and execution for major product initiatives serving millions of users",
-        "Fostered an engineering culture focused on quality, innovation, and continuous learning",
         "Collaborated with product and design teams to deliver customer-centric solutions",
         "Reduced production incidents from 2-3 per week to roughly 1 per month through improved monitoring and testing practices"
       ]
@@ -102,8 +101,7 @@
         "Developed and maintained core authentication and account systems handling 50,000+ RPS",
         "Built a scalable microservices architecture serving 40+ million users",
         "Optimized database queries and caching strategies, reducing response time from 3-5s to 100-200ms",
-        "Implemented security best practices including OAuth2, JWT, and multi-factor authentication",
-        "Collaborated with the infrastructure team on system reliability and performance improvements"
+        "Implemented security best practices including OAuth2, JWT, and multi-factor authentication"
       ]
     }
   ]
