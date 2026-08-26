@@ -1,0 +1,108 @@
+{
+  "profile": {
+    "name": "Agustinus Ardhito Vedoputro",
+    "title": "Engineering Manager",
+    "location": "Jakarta, Indonesia · Open to relocation",
+    "photo": "/self-formal.png",
+    "summary": "Engineering Manager with 8+ years in software engineering and 5+ years leading teams, who stays hands-on in architecture and system design. Track record of designing complex distributed, event-driven systems (Redis, microservices) and scaling platforms to serve millions of users at high reliability — while growing high-performing teams and driving technical strategy across mission-critical, HRIS, and government-scale applications.",
+    "contact": {
+      "email": "agusdhito@gmail.com",
+      "linkedinUrl": "https://www.linkedin.com/in/agustinus-ardhito/",
+      "linkedinLabel": "/in/agustinus-ardhito",
+      "githubUrl": "https://github.com/agusdhito",
+      "githubLabel": "/agusdhito",
+      "portfolioUrl": "https://agusdhito.github.io",
+      "portfolioLabel": "agusdhito.github.io"
+    }
+  },
+  "skills": [
+    { "category": "Programming Languages", "items": ["Go", "Ruby", "Java", "PHP", "TypeScript", "JavaScript", "Python"] },
+    { "category": "Frameworks", "items": ["Ruby on Rails", "React", "Next.js", "PHP Yii"] },
+    { "category": "Databases", "items": ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Cassandra", "ELK"] },
+    { "category": "DevOps & Tools", "items": ["Docker", "Kubernetes", "GCP", "Git", "CI/CD"] },
+    { "category": "Architecture & Leadership", "items": ["System Design", "Distributed Systems", "Event-Driven Architecture", "Team Management", "Agile/Scrum", "Technical Mentoring"] },
+    { "category": "Languages (Spoken)", "items": ["English (Professional)", "Indonesian (Native)"] }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "institution": "University of Indonesia",
+      "start": "2013",
+      "end": "2018"
+    }
+  ],
+  "keyAchievements": [
+    "Scaled systems to support 5+ million daily active users with 99.9% uptime",
+    "At Bukalapak, led migration of a monolithic application to a microservices architecture, improving scalability and enabling teams to build and deploy independently",
+    "Grew and mentored 10+ software engineers across architecture, backend, frontend, and QA"
+  ],
+  "experiences": [
+    {
+      "id": "mekari-em",
+      "job_title": "Engineering Manager",
+      "company": "PT. Mid Solusi Nusantara (Mekari Talenta)",
+      "logo_url": "/mekari-talenta-resume.jpeg",
+      "start": "2025-06",
+      "end": null,
+      "dateLabel": "Jun 2025 - Present",
+      "summary": "Leading and growing a team of 10 (Architect, Backend, Frontend, QA), driving platform performance and reliability for Mekari Talenta's HRIS across 1000+ B2B companies and third-party integrations.",
+      "achievements": [
+        "Lead, manage, and mentor a team of 10 across Architecture, Backend, Frontend, and QA",
+        "Drove a 12x improvement in platform performance through architecture and system-design changes",
+        "Own architecture and system design for the platform, applying Redis caching and event-driven services for high reliability",
+        "Manage technical and non-technical stakeholders across HRIS integrations with 1000+ B2B companies and third-party providers"
+      ]
+    },
+    {
+      "id": "govtechedu-em",
+      "job_title": "Engineering Manager",
+      "company": "GovTechEdu Indonesia",
+      "logo_url": "/govtechedu.png",
+      "start": "2022-04",
+      "end": "2024-12",
+      "dateLabel": "Apr 2022 - Dec 2024",
+      "summary": "Led and grew a team of 10+ (Architect, Backend, Frontend, QA), building and maintaining a data visualization platform for 500k+ schools and 5M+ Indonesian principals and teachers.",
+      "achievements": [
+        "Led and mentored a team of 10+ engineers across Architecture, Backend, Frontend, and QA",
+        "Spearheaded development of a data visualization platform serving 500,000+ schools and 5+ million users",
+        "Designed distributed, event-driven architecture (Redis, microservices) for a high-reliability platform",
+        "Drove technical strategy and architecture decisions for national government education initiatives",
+        "Improved team delivery velocity through agile process optimization and clearer planning",
+        "Established engineering best practices, code review standards, and CI/CD pipelines"
+      ]
+    },
+    {
+      "id": "bukalapak-em",
+      "job_title": "Engineering Manager",
+      "company": "PT. Bukalapak.com",
+      "logo_url": "/bukalapak.png",
+      "start": "2021-01",
+      "end": "2022-03",
+      "dateLabel": "Jan 2021 - Mar 2022",
+      "summary": "Led and grew a cross-functional team of 7+ across Backend, Frontend, Android, and iOS.",
+      "achievements": [
+        "Managed a cross-functional team of 7+ engineers across Backend, Frontend, Android, and iOS",
+        "Drove architecture and system-design decisions for distributed, event-driven services",
+        "Led technical planning and execution for major product initiatives serving millions of users",
+        "Collaborated with product and design teams to deliver customer-centric solutions",
+        "Reduced production incidents from 2-3 per week to roughly 1 per month through improved monitoring and testing practices"
+      ]
+    },
+    {
+      "id": "bukalapak-be",
+      "job_title": "Backend Software Engineer",
+      "company": "PT. Bukalapak.com",
+      "logo_url": "/bukalapak.png",
+      "start": "2017-06",
+      "end": "2020-12",
+      "dateLabel": "Jun 2017 - Dec 2020",
+      "summary": "Built and maintained the core Account & Auth system for 40M+ users at 50,000+ RPS.",
+      "achievements": [
+        "Developed and maintained core authentication and account systems handling 50,000+ RPS",
+        "Built a scalable microservices architecture serving 40+ million users",
+        "Optimized database queries and caching strategies, reducing response time from 3-5s to 100-200ms",
+        "Implemented security best practices including OAuth2, JWT, and multi-factor authentication"
+      ]
+    }
+  ]
+}
