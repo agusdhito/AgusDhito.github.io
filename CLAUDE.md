@@ -49,6 +49,32 @@ AI / ATS parsing (the `/resume` page and `cv.pdf`):
 - The site must remain a static export deployable to GitHub Pages — no feature
   that requires a running server in production.
 
+## Cover Letters
+
+Cover letters are drafted from `cover-letters/template.html` (gitignored, never
+deployed). One file per application; export to PDF via the browser Print button.
+
+When drafting a letter, follow these rules:
+- **Length: 2-3 short paragraphs, ≤ 200 words, always ≤ 1 page.** Use 2 when the
+  JD is thin; use 3 when there's a strong metric worth featuring. Do not pad to
+  four.
+- **Structure:** (1) role + a specific hook on why this company, and the most
+  relevant proof — leadership scope and hands-on depth mapped to their stated
+  needs; (2) one concrete achievement with a real number, tied to the role
+  (fold into para 1 if only using two paragraphs); (3) motivation for the
+  company/market, relocation note, and a call to action.
+- **Natural, not AI-boilerplate.** Ban: "I am writing to express", "perfect
+  fit", "passionate", "team player", "proven track record", "fast-paced
+  environment", "I believe". Vary sentence length; write like a senior EM speaks.
+- **Impact & motivation over duties.** Every claim should map to something the
+  company needs (from the JD) or something the candidate genuinely wants.
+- **Tailor to the JD:** mirror the role's language and top 2-3 requirements.
+- **Facts must match `site-content.json`.** No invented metrics, titles, or
+  employers. If a needed fact or motivation is missing, ask the user — don't
+  fabricate.
+- **Market tone:** SG/NL — concise, direct, metric-led. JP (international track)
+  — respectful, specific, less self-promotional. Keep English professional.
+
 ## Commands
 
 - `npm run dev` — local dev server (Turbopack) at http://localhost:3000
