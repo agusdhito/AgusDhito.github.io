@@ -1,0 +1,105 @@
+{
+  "profile": {
+    "name": "Agustinus Ardhito Vedoputro",
+    "title": "Engineering Manager",
+    "location": "Jakarta, Indonesia",
+    "photo": "/self-formal.png",
+    "summary": "Experienced Engineering Manager with 7+ years in software development and 3+ years in leadership roles. Proven track record of leading high-performing engineering teams, scaling systems to serve millions of users, and driving technical excellence. Expertise in backend systems, microservices architecture, and building robust, scalable platforms for mission-critical applications.",
+    "contact": {
+      "email": "agusdhito@gmail.com",
+      "linkedinUrl": "https://www.linkedin.com/in/agustinus-ardhito/",
+      "linkedinLabel": "/in/agusdhito",
+      "githubUrl": "https://github.com/agusdhito",
+      "githubLabel": "/agusdhito",
+      "portfolioUrl": "https://agusdhito.github.io",
+      "portfolioLabel": "agusdhito.github.io"
+    }
+  },
+  "skills": [
+    { "category": "Languages", "items": ["Go", "Ruby", "Java", "PHP", "TypeScript", "JavaScript", "Python"] },
+    { "category": "Frameworks", "items": ["Ruby on Rails", "React", "Next.js", "PHP Yii"] },
+    { "category": "Databases", "items": ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Cassandra", "ELK"] },
+    { "category": "DevOps & Tools", "items": ["Docker", "Kubernetes", "GCP", "Git", "CI/CD"] },
+    { "category": "Leadership", "items": ["Team Management", "Agile/Scrum", "Technical Mentoring", "System Design"] }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "institution": "University of Indonesia",
+      "start": "2013",
+      "end": "2018"
+    }
+  ],
+  "keyAchievements": [
+    "Successfully scaled systems to support 5+ million daily active users with 99.9% uptime",
+    "Led migration of monolithic application to microservices architecture, improving performance by 90%",
+    "Recognized for excellence in mentoring 8-10 software engineers in technical leadership and team development"
+  ],
+  "experiences": [
+    {
+      "id": "mekari-em",
+      "job_title": "Engineering Manager",
+      "company": "PT. Mid Solusi Nusantara (Mekari Talenta)",
+      "logo_url": "/mekari-talenta-resume.jpeg",
+      "start": "2025-06",
+      "end": null,
+      "dateLabel": "Jun 2025 - Present",
+      "summary": "Leading & growing 8 team members with backgrounds like Architect, BE, FE, and QA. Innovating best practice, increasing platform performance & reliability on Mekari Talenta with 1000+ B2B company HRIS system integration.",
+      "achievements": [
+        "Leading, managing, and mentoring 8 team members (Frontend, Backend)",
+        "Innovating best practice, increasing platform performance & reliability on Mekari Talenta with 1000+ B2B companies integration"
+      ]
+    },
+    {
+      "id": "govtechedu-em",
+      "job_title": "Engineering Manager",
+      "company": "GovTechEdu Indonesia",
+      "logo_url": "/govtechedu.png",
+      "start": "2022-04",
+      "end": "2024-12",
+      "dateLabel": "Apr 2022 - Dec 2024",
+      "summary": "Leading & growing 10+ team members with backgrounds like Architect, BE, FE, and QA. Building & maintaining data visualization platform for 500k+ schools and 5mio+ Indonesian school principals & teachers.",
+      "achievements": [
+        "Lead and mentor a team of 10+ engineers across multiple disciplines (Architecture, Backend, Frontend, QA)",
+        "Spearhead development of data visualization platform serving 500,000+ schools and 5+ million users",
+        "Drive technical strategy and architecture decisions for government education technology initiatives",
+        "Implement agile practices and improve team velocity by 40% through process optimization",
+        "Establish engineering best practices, code review standards, and CI/CD pipelines"
+      ]
+    },
+    {
+      "id": "bukalapak-em",
+      "job_title": "Engineering Manager",
+      "company": "PT. Bukalapak.com",
+      "logo_url": "/bukalapak.png",
+      "start": "2021-01",
+      "end": "2022-03",
+      "dateLabel": "Jan 2021 - Mar 2022",
+      "summary": "Leading & growing 7+ team members with different background & skillsets (BE, FE, Android, iOS).",
+      "achievements": [
+        "Managed cross-functional team of 7+ engineers covering Backend, Frontend, Android, and iOS development",
+        "Led technical planning and execution for major product initiatives serving millions of users",
+        "Fostered engineering culture focused on quality, innovation, and continuous learning",
+        "Collaborated with product and design teams to deliver customer-centric solutions",
+        "Reduced production incidents by 60% through improved monitoring and testing practices"
+      ]
+    },
+    {
+      "id": "bukalapak-be",
+      "job_title": "Backend Software Engineer",
+      "company": "PT. Bukalapak.com",
+      "logo_url": "/bukalapak.png",
+      "start": "2017-06",
+      "end": "2020-12",
+      "dateLabel": "Jun 2017 - Dec 2020",
+      "summary": "Building & maintaining Core Account & Auth system for 40m+ users and 50000+ RPS.",
+      "achievements": [
+        "Developed and maintained core authentication and account systems handling 50,000+ RPS",
+        "Built scalable microservices architecture serving 40+ million users",
+        "Optimized database queries and caching strategies, reducing response time by 70%",
+        "Implemented security best practices including OAuth2, JWT, and multi-factor authentication",
+        "Collaborated with infrastructure team on system reliability and performance improvements"
+      ]
+    }
+  ]
+}

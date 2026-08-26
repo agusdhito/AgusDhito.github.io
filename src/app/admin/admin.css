@@ -1,0 +1,204 @@
+.admin-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 6rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: #222;
+}
+
+.admin-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: #0066cc;
+}
+
+.admin-subtitle {
+  color: #666;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.938rem;
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.admin-card h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0066cc;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 0 0 1rem 0;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 0.5rem;
+}
+
+.admin-field {
+  margin-bottom: 1rem;
+}
+
+.admin-field label {
+  display: block;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.35rem;
+}
+
+.admin-field input[type="text"],
+.admin-field input[type="password"],
+.admin-field input[type="email"],
+.admin-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  background: #fff;
+  color: #222;
+}
+
+.admin-field textarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.admin-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.admin-row > * {
+  flex: 1;
+}
+
+.admin-entry {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fafafa;
+  position: relative;
+}
+
+.admin-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.admin-entry-header span {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.875rem;
+}
+
+.admin-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.admin-btn:hover {
+  opacity: 0.88;
+}
+
+.admin-btn-primary {
+  background: #0066cc;
+  color: #fff;
+}
+
+.admin-btn-danger {
+  background: #fff;
+  color: #c62828;
+  border: 1px solid #c62828;
+}
+
+.admin-btn-secondary {
+  background: #eee;
+  color: #333;
+}
+
+.admin-btn-small {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.admin-add-btn {
+  margin-top: 0.25rem;
+}
+
+.admin-actions {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  margin: 0 -1.25rem;
+}
+
+.admin-status {
+  font-size: 0.875rem;
+}
+
+.admin-status.error {
+  color: #c62828;
+}
+
+.admin-status.success {
+  color: #2e7d32;
+}
+
+.admin-status.loading {
+  color: #666;
+}
+
+.admin-token-box {
+  background: #f5f8ff;
+  border: 1px solid #cfe0ff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-token-box p {
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+}
+
+.admin-token-box ol {
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  padding-left: 1.25rem;
+}
+
+.admin-locked-banner {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #6d4c00;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}

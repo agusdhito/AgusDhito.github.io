@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { Divider, Typography, Box, Container, Button, List, ListItem, IconButton, Collapse, createTheme, useMediaQuery } from "@mui/material"
 import { useEffect, useState } from "react";
 import { Rect, useRect } from "react-use-rect";
@@ -16,9 +15,7 @@ import {
   KeyboardArrowDown,
   KeyboardArrowUp
 } from "@mui/icons-material"
-import { WorkingExperiences } from "@/app/data/data";
-import experiencesData from '@/app/data/experience_timeline.json';
-import { ExperienceBox } from "@/app/ui/ExperienceBox";
+import siteContent from '@/app/data/site-content.json';
 import { ThemeProvider } from "@emotion/react";
 import Timeline from '@/app/ui/Timeline';
 
@@ -64,6 +61,14 @@ const theme = createTheme({
 function Landing() {
   const mock = ["Engineering Manager", "Backend Engineer", "Frontend Engineer", "Guitarist", "Music Producer"];
   const slidePictures = ["golang.png", "ruby-on-rails.png", "java.png", "postgresql.png", "redis.png", "react.png", "typescript.png", "docker.png", "kubernetes.png", "gcp.png"];
+
+  // Derive the timeline items from the single source-of-truth content file,
+  // so this page can never drift from the resume page's dates/numbers again.
+  const experiencesData = siteContent.experiences.map((experience) => ({
+    time: experience.dateLabel,
+    title: `${experience.job_title} - ${experience.company}`,
+    description: experience.summary,
+  }));
 
   const [detailsOpen, setDetailsOpen] = useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -429,14 +434,6 @@ function Landing() {
               </Typography>
             </div>
 
-            {/* container cardnya */}
-            {/* {WorkingExperiences.map((exp, index) => (
-              <ExperienceBox
-                imageSrc={exp.imageSrc}
-                title={exp.title}
-                description={exp.description}
-              />
-            ))} */}
             <Typography variant="body1" paragraph align="center" sx={{ mb: 6 }}>
               Scroll down to explore my professional journey throughout the years.
             </Typography>
