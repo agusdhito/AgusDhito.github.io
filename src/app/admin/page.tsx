@@ -1,15 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './admin.css';
-import defaultContent from '@/app/data/site-content.json';
-
-// ---- Config: this content file always lives at this path in this repo ----
-const OWNER = 'agusdhito';
-const REPO = 'AgusDhito.github.io';
-const FILE_PATH = 'src/app/data/site-content.json';
-const BRANCH = 'main';
-const TOKEN_STORAGE_KEY = 'agusdhito_site_admin_pat';
+import initialContent from '@/app/data/site-content.json';
 
 // ---- Types (mirrors src/app/data/site-content.json) ----
 interface Contact {
@@ -58,22 +51,9 @@ interface SiteContent {
   experiences: Experience[];
 }
 
-// ---- base64 <-> unicode helpers (GitHub Contents API uses base64) ----
-function b64DecodeUnicode(base64: string): string {
-  const binary = atob(base64.replace(/\n/g, ''));
-  const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
-  return new TextDecoder('utf-8').decode(bytes);
-}
-function b64EncodeUnicode(str: string): string {
-  const bytes = new TextEncoder().encode(str);
-  let binary = '';
-  bytes.forEach((b) => (binary += String.fromCharCode(b)));
-  return btoa(binary);
-}
-
 function emptyExperience(): Experience {
   return {
-    id: `exp-${Date.now()}`,
+    id: `exp-${Math.random().toString(36).slice(2)}`,
     job_title: '',
     company: '',
     logo_url: '',
@@ -86,153 +66,70 @@ function emptyExperience(): Experience {
 }
 
 export default function AdminPage() {
-  const [token, setToken] = useState('');
-  const [tokenSaved, setTokenSaved] = useState(false);
-  const [content, setContent] = useState<SiteContent>(defaultContent as SiteContent);
-  const [sha, setSha] = useState<string | null>(null);
+  const [password, setPassword] = useState('');
+  const [content, setContent] = useState<SiteContent>(initialContent as SiteContent);
   const [status, setStatus] = useState<{ kind: 'idle' | 'loading' | 'success' | 'error'; message: string }>({
     kind: 'idle',
     message: '',
   });
 
-  useEffect(() => {
-    const stored = window.localStorage.getItem(TOKEN_STORAGE_KEY);
-    if (stored) {
-      setToken(stored);
-      setTokenSaved(true);
-    }
-  }, []);
-
-  async function loadFromGitHub(activeToken: string) {
-    setStatus({ kind: 'loading', message: 'Loading current content from GitHub…' });
-    try {
-      const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`,
-        {
-          headers: {
-            Authorization: `Bearer ${activeToken}`,
-            Accept: 'application/vnd.github+json',
-            'X-GitHub-Api-Version': '2022-11-28',
-          },
-        }
-      );
-      if (!res.ok) {
-        const body = await res.text();
-        throw new Error(`GitHub returned ${res.status}: ${body.slice(0, 200)}`);
-      }
-      const json = await res.json();
-      const decoded = b64DecodeUnicode(json.content);
-      setContent(JSON.parse(decoded));
-      setSha(json.sha);
-      setStatus({ kind: 'success', message: 'Loaded current content from GitHub.' });
-    } catch (err) {
-      setStatus({ kind: 'error', message: err instanceof Error ? err.message : 'Failed to load content.' });
-    }
-  }
-
-  function handleSaveToken() {
-    window.localStorage.setItem(TOKEN_STORAGE_KEY, token);
-    setTokenSaved(true);
-    loadFromGitHub(token);
-  }
-
-  function handleForgetToken() {
-    window.localStorage.removeItem(TOKEN_STORAGE_KEY);
-    setToken('');
-    setTokenSaved(false);
-    setSha(null);
-    setStatus({ kind: 'idle', message: '' });
-  }
-
-  async function handlePublish() {
-    if (!token) {
-      setStatus({ kind: 'error', message: 'No access token set.' });
+  async function handleSave() {
+    if (!password) {
+      setStatus({ kind: 'error', message: 'Enter the admin password to save.' });
       return;
     }
-    setStatus({ kind: 'loading', message: 'Publishing to GitHub…' });
+    setStatus({ kind: 'loading', message: 'Saving…' });
     try {
-      const body: Record<string, unknown> = {
-        message: 'Update site content via admin editor',
-        content: b64EncodeUnicode(JSON.stringify(content, null, 2) + '\n'),
-        branch: BRANCH,
-      };
-      if (sha) body.sha = sha;
-
-      const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github+json',
-          'X-GitHub-Api-Version': '2022-11-28',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
+      const res = await fetch('/api/admin/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, content }),
       });
-      if (!res.ok) {
-        const errBody = await res.text();
-        throw new Error(`GitHub returned ${res.status}: ${errBody.slice(0, 300)}`);
-      }
-      const json = await res.json();
-      setSha(json.content.sha);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Save failed (${res.status})`);
       setStatus({
         kind: 'success',
-        message: 'Published. GitHub Actions will rebuild the site — it usually takes 1-2 minutes to go live.',
+        message: 'Saved to site-content.json. Commit and push to publish it to the live site.',
       });
     } catch (err) {
-      setStatus({ kind: 'error', message: err instanceof Error ? err.message : 'Failed to publish.' });
+      setStatus({ kind: 'error', message: err instanceof Error ? err.message : 'Failed to save.' });
     }
   }
 
   // ---- generic update helpers ----
+  const update = (updater: (c: SiteContent) => SiteContent) => setContent((c) => updater(c));
+
   const updateProfile = (patch: Partial<Profile>) =>
-    setContent((c) => ({ ...c, profile: { ...c.profile, ...patch } }));
+    update((c) => ({ ...c, profile: { ...c.profile, ...patch } }));
   const updateContact = (patch: Partial<Contact>) =>
-    setContent((c) => ({ ...c, profile: { ...c.profile, contact: { ...c.profile.contact, ...patch } } }));
+    update((c) => ({ ...c, profile: { ...c.profile, contact: { ...c.profile.contact, ...patch } } }));
 
   const updateSkillGroup = (index: number, patch: Partial<SkillGroup>) =>
-    setContent((c) => ({
-      ...c,
-      skills: c.skills.map((s, i) => (i === index ? { ...s, ...patch } : s)),
-    }));
-  const addSkillGroup = () =>
-    setContent((c) => ({ ...c, skills: [...c.skills, { category: '', items: [] }] }));
+    update((c) => ({ ...c, skills: c.skills.map((s, i) => (i === index ? { ...s, ...patch } : s)) }));
+  const addSkillGroup = () => update((c) => ({ ...c, skills: [...c.skills, { category: '', items: [] }] }));
   const removeSkillGroup = (index: number) =>
-    setContent((c) => ({ ...c, skills: c.skills.filter((_, i) => i !== index) }));
+    update((c) => ({ ...c, skills: c.skills.filter((_, i) => i !== index) }));
 
   const updateEducation = (index: number, patch: Partial<Education>) =>
-    setContent((c) => ({
-      ...c,
-      education: c.education.map((e, i) => (i === index ? { ...e, ...patch } : e)),
-    }));
+    update((c) => ({ ...c, education: c.education.map((e, i) => (i === index ? { ...e, ...patch } : e)) }));
   const addEducation = () =>
-    setContent((c) => ({
-      ...c,
-      education: [...c.education, { degree: '', institution: '', start: '', end: '' }],
-    }));
+    update((c) => ({ ...c, education: [...c.education, { degree: '', institution: '', start: '', end: '' }] }));
   const removeEducation = (index: number) =>
-    setContent((c) => ({ ...c, education: c.education.filter((_, i) => i !== index) }));
+    update((c) => ({ ...c, education: c.education.filter((_, i) => i !== index) }));
 
   const updateKeyAchievement = (index: number, value: string) =>
-    setContent((c) => ({
-      ...c,
-      keyAchievements: c.keyAchievements.map((a, i) => (i === index ? value : a)),
-    }));
-  const addKeyAchievement = () =>
-    setContent((c) => ({ ...c, keyAchievements: [...c.keyAchievements, ''] }));
+    update((c) => ({ ...c, keyAchievements: c.keyAchievements.map((a, i) => (i === index ? value : a)) }));
+  const addKeyAchievement = () => update((c) => ({ ...c, keyAchievements: [...c.keyAchievements, ''] }));
   const removeKeyAchievement = (index: number) =>
-    setContent((c) => ({ ...c, keyAchievements: c.keyAchievements.filter((_, i) => i !== index) }));
+    update((c) => ({ ...c, keyAchievements: c.keyAchievements.filter((_, i) => i !== index) }));
 
   const updateExperience = (index: number, patch: Partial<Experience>) =>
-    setContent((c) => ({
-      ...c,
-      experiences: c.experiences.map((e, i) => (i === index ? { ...e, ...patch } : e)),
-    }));
-  const addExperience = () =>
-    setContent((c) => ({ ...c, experiences: [emptyExperience(), ...c.experiences] }));
+    update((c) => ({ ...c, experiences: c.experiences.map((e, i) => (i === index ? { ...e, ...patch } : e)) }));
+  const addExperience = () => update((c) => ({ ...c, experiences: [emptyExperience(), ...c.experiences] }));
   const removeExperience = (index: number) =>
-    setContent((c) => ({ ...c, experiences: c.experiences.filter((_, i) => i !== index) }));
+    update((c) => ({ ...c, experiences: c.experiences.filter((_, i) => i !== index) }));
   const moveExperience = (index: number, direction: -1 | 1) =>
-    setContent((c) => {
+    update((c) => {
       const arr = [...c.experiences];
       const target = index + direction;
       if (target < 0 || target >= arr.length) return c;
@@ -240,76 +137,32 @@ export default function AdminPage() {
       return { ...c, experiences: arr };
     });
   const updateExperienceAchievement = (expIndex: number, achIndex: number, value: string) =>
-    setContent((c) => ({
+    update((c) => ({
       ...c,
       experiences: c.experiences.map((e, i) =>
         i === expIndex ? { ...e, achievements: e.achievements.map((a, j) => (j === achIndex ? value : a)) } : e
       ),
     }));
   const addExperienceAchievement = (expIndex: number) =>
-    setContent((c) => ({
+    update((c) => ({
       ...c,
-      experiences: c.experiences.map((e, i) =>
-        i === expIndex ? { ...e, achievements: [...e.achievements, ''] } : e
-      ),
+      experiences: c.experiences.map((e, i) => (i === expIndex ? { ...e, achievements: [...e.achievements, ''] } : e)),
     }));
   const removeExperienceAchievement = (expIndex: number, achIndex: number) =>
-    setContent((c) => ({
+    update((c) => ({
       ...c,
       experiences: c.experiences.map((e, i) =>
         i === expIndex ? { ...e, achievements: e.achievements.filter((_, j) => j !== achIndex) } : e
       ),
     }));
 
-  if (!tokenSaved) {
-    return (
-      <div className="admin-container">
-        <h1 className="admin-title">Site Content Editor</h1>
-        <p className="admin-subtitle">Edit your resume/portfolio content and publish it straight to GitHub.</p>
-
-        <div className="admin-token-box">
-          <p>
-            This editor commits changes directly to <code>{OWNER}/{REPO}</code> using a GitHub personal access
-            token. The token is stored only in this browser (localStorage) — it is never sent anywhere except
-            directly to api.github.com.
-          </p>
-          <ol>
-            <li>Go to GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens.</li>
-            <li>Create a token scoped to only the <code>{REPO}</code> repository.</li>
-            <li>Under Repository permissions, grant <strong>Contents: Read and write</strong>.</li>
-            <li>Paste the token below.</li>
-          </ol>
-          <div className="admin-field">
-            <label htmlFor="pat">GitHub personal access token</label>
-            <input
-              id="pat"
-              type="password"
-              value={token}
-              onChange={(e) => setToken(e.target.value)}
-              placeholder="github_pat_..."
-            />
-          </div>
-          <button className="admin-btn admin-btn-primary" onClick={handleSaveToken} disabled={!token}>
-            Save &amp; load content
-          </button>
-        </div>
-        {status.kind !== 'idle' && <p className={`admin-status ${status.kind}`}>{status.message}</p>}
-      </div>
-    );
-  }
-
   return (
     <div className="admin-container">
       <h1 className="admin-title">Site Content Editor</h1>
       <p className="admin-subtitle">
-        Editing <code>{FILE_PATH}</code> on <code>{OWNER}/{REPO}</code> — changes publish on save and rebuild via
-        GitHub Actions.
+        Local editor — edits are written to <code>src/app/data/site-content.json</code>. Commit and push to
+        publish them.
       </p>
-
-      <div className="admin-locked-banner">
-        Signed in with a saved token. <button className="admin-btn admin-btn-small admin-btn-secondary" onClick={handleForgetToken}>Forget token</button>
-        {' '}<button className="admin-btn admin-btn-small admin-btn-secondary" onClick={() => loadFromGitHub(token)}>Reload from GitHub</button>
-      </div>
 
       {/* Profile */}
       <section className="admin-card">
@@ -480,7 +333,7 @@ export default function AdminPage() {
                 <input type="text" value={exp.logo_url} onChange={(e) => updateExperience(i, { logo_url: e.target.value })} />
               </div>
               <div className="admin-field">
-                <label>Date label (shown on site, e.g. "Jan 2021 - Mar 2022")</label>
+                <label>Date label (shown on site, e.g. &quot;Jan 2021 - Mar 2022&quot;)</label>
                 <input type="text" value={exp.dateLabel} onChange={(e) => updateExperience(i, { dateLabel: e.target.value })} />
               </div>
             </div>
@@ -513,7 +366,14 @@ export default function AdminPage() {
       </section>
 
       <div className="admin-actions">
-        <button className="admin-btn admin-btn-primary" onClick={handlePublish}>Publish changes</button>
+        <input
+          type="password"
+          placeholder="Admin password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ maxWidth: '220px' }}
+        />
+        <button className="admin-btn admin-btn-primary" onClick={handleSave}>Save changes</button>
         {status.kind !== 'idle' && <span className={`admin-status ${status.kind}`}>{status.message}</span>}
       </div>
     </div>
