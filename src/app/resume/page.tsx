@@ -135,14 +135,14 @@ export default function ResumePage() {
             </section>
 
             {/* Achievements Section */}
-            <section className="achievements-section">
+            {/* <section className="achievements-section">
               <h2 className="section-title">KEY ACHIEVEMENTS</h2>
               <ul className="achievements">
                 {keyAchievements.map((achievement, index) => (
                   <li key={index}>{achievement}</li>
                 ))}
               </ul>
-            </section>
+            </section> */}
           </main>
         </div>
       </div>

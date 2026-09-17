@@ -349,10 +349,12 @@
   height: 20px;
 }
 
-/* Print Styles - Optimized for 1 Page */
+/* Print Styles - Optimized for a natural 2-page A4 resume */
 @page {
   size: A4 portrait;
-  margin: 0;
+  /* Real margins on EVERY page. Do not use margin:0 + container padding:
+     that only pads the first page and lets later pages touch the paper edge. */
+  margin: 11mm 10mm;
 }
 
 @media print {
@@ -371,7 +373,6 @@
     display: none !important;
   }
 
-  /* Force everything into one page */
   html,
   body {
     height: auto !important;
@@ -380,9 +381,9 @@
     padding: 0 !important;
   }
 
-  /* Reset container - NO MIN HEIGHT */
+  /* Reset container - @page handles the margins now */
   .resume-container {
-    padding: 0.4cm 0.5cm !important;
+    padding: 0 !important;
     background: white;
     min-height: 0 !important;
     height: auto !important;
@@ -395,78 +396,88 @@
     height: auto !important;
     margin: 0 !important;
     width: 100% !important;
-    page-break-after: avoid !important;
-    page-break-before: avoid !important;
   }
 
-  /* Optimize header for print - MORE COMPACT */
+  /* Header */
   .resume-header {
-    padding: 0.6rem 1rem !important;
+    padding: 0.7rem 1rem !important;
     background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    page-break-after: avoid !important;
-    page-break-inside: avoid !important;
+    break-inside: avoid;
+    break-after: avoid;
   }
 
   .header-content {
-    gap: 0.75rem !important;
+    gap: 1rem !important;
+    max-width: none !important;
   }
 
   .resume-header .portrait-placeholder {
-    width: 65px !important;
-    height: 65px !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    width: 78px !important;
+    height: 78px !important;
+    border: 2px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: none !important;
   }
 
   .resume-header .portrait-placeholder svg {
-    width: 35px !important;
-    height: 35px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .resume-header .name {
-    font-size: 1.4rem !important;
+    font-size: 19pt !important;
     margin: 0 0 0.15rem 0 !important;
   }
 
   .resume-header .title {
-    font-size: 0.875rem !important;
-    margin: 0 0 0.1rem 0 !important;
+    font-size: 11pt !important;
+    margin: 0 0 0.12rem 0 !important;
   }
 
   .resume-header .location {
-    font-size: 0.75rem !important;
+    font-size: 9pt !important;
   }
 
-  /* Two Column Layout - COMPACT */
+  /* Use normal block flow for pagination. A tall grid row can be moved in
+     its entirety to the next sheet, leaving only the header on page 1. */
   .resume-content {
-    display: grid !important;
-    grid-template-columns: 200px 1fr !important;
-    gap: 0 !important;
+    display: block !important;
+    break-inside: auto !important;
     min-height: 0 !important;
     height: auto !important;
-    page-break-inside: avoid !important;
-  }
-
-  /* Sidebar optimization - VERY COMPACT */
-  .sidebar {
-    background: #f8f9fa !important;
+    /* Painted per page fragment, so the sidebar stripe + divider continue
+       onto page 2 even where the sidebar box itself stops. */
+    background: linear-gradient(to right,
+      #f8f9fa 0 199px,
+      #e0e0e0 199px 200px,
+      #ffffff 200px) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    padding: 0.75rem 0.65rem !important;
-    border-right: 1px solid #ddd;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    float: left;
+    width: 200px;
+    box-sizing: border-box;
+    break-inside: auto;
+    background: transparent !important;
+    padding: 0.85rem 0.7rem !important;
+    border-right: none !important;
   }
 
   .sidebar .section-title {
-    font-size: 0.688rem !important;
-    margin: 0 0 0.4rem 0 !important;
+    font-size: 9pt !important;
+    margin: 0 0 0.45rem 0 !important;
     padding-bottom: 0.25rem !important;
     border-bottom: 1.5px solid #0066cc;
+    break-after: avoid;
   }
 
   .contact-section,
   .skills-section {
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .education-section {
@@ -474,9 +485,9 @@
   }
 
   .contact-item {
-    margin-bottom: 0.35rem !important;
-    font-size: 0.688rem !important;
-    line-height: 1.3 !important;
+    margin-bottom: 0.4rem !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
   }
 
   .contact-label {
@@ -485,6 +496,7 @@
 
   .skill-category {
     margin-bottom: 0.6rem !important;
+    break-inside: avoid;
   }
 
   .skill-category:last-child {
@@ -492,55 +504,63 @@
   }
 
   .skill-category-title {
-    font-size: 0.688rem !important;
-    margin: 0 0 0.25rem 0 !important;
+    font-size: 8.5pt !important;
+    margin: 0 0 0.2rem 0 !important;
   }
 
   .skill-list {
-    font-size: 0.625rem !important;
+    font-size: 8pt !important;
     line-height: 1.4 !important;
   }
 
+  .education-item {
+    break-inside: avoid;
+  }
+
   .degree {
-    font-size: 0.688rem !important;
+    font-size: 8.5pt !important;
     margin: 0 0 0.15rem 0 !important;
   }
 
   .institution,
   .year {
-    font-size: 0.625rem !important;
+    font-size: 8pt !important;
     margin: 0 0 0.1rem 0 !important;
   }
 
-  /* Main content optimization - VERY COMPACT */
+  /* Main content */
   .main-content {
-    padding: 0.75rem 1rem !important;
+    margin-left: 200px;
+    break-inside: auto;
+    padding: 0.85rem 1rem !important;
   }
 
   .main-content .section-title {
-    font-size: 0.813rem !important;
-    margin: 0 0 0.45rem 0 !important;
+    font-size: 11pt !important;
+    margin: 0 0 0.5rem 0 !important;
     padding-bottom: 0.25rem !important;
     border-bottom: 1.5px solid #0066cc;
+    break-after: avoid;
   }
 
   .summary-section {
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 1rem !important;
+    break-inside: avoid;
   }
 
   .summary-text {
-    font-size: 0.688rem !important;
-    line-height: 1.4 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
   }
 
   .experience-section {
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .experience-item {
-    margin-bottom: 0.75rem !important;
-    padding-bottom: 0.65rem !important;
-    page-break-inside: avoid !important;
+    margin-bottom: 0.85rem !important;
+    padding-bottom: 0.7rem !important;
+    break-inside: avoid;
     border-bottom: 1px solid #e0e0e0;
   }
 
@@ -555,42 +575,44 @@
   }
 
   .company-logo {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    border-radius: 4px !important;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
   }
 
   .company-logo svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 17px !important;
+    height: 17px !important;
   }
 
   .experience-header {
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.4rem !important;
+    break-after: avoid;
   }
 
   .job-title {
-    font-size: 0.813rem !important;
+    font-size: 10.5pt !important;
     margin: 0 0 0.15rem 0 !important;
   }
 
   .company {
-    font-size: 0.688rem !important;
+    font-size: 9pt !important;
   }
 
   .date {
-    font-size: 0.625rem !important;
+    font-size: 8.5pt !important;
   }
 
   .achievements {
     margin: 0 !important;
-    padding-left: 0.85rem !important;
+    padding-left: 0.95rem !important;
   }
 
   .achievements li {
-    font-size: 0.625rem !important;
-    line-height: 1.35 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
     margin-bottom: 0.25rem !important;
   }
 
@@ -600,16 +622,14 @@
 
   .achievements-section {
     margin-bottom: 0 !important;
+    break-inside: avoid;
   }
 
-  /* Prevent page breaks */
-  .resume-header,
-  .sidebar,
-  .main-content,
-  .experience-item,
-  .skill-category,
-  .education-item {
-    page-break-inside: avoid;
+  /* Never strand a single line of a paragraph across a page boundary */
+  p,
+  li {
+    orphans: 2;
+    widows: 2;
   }
 
   /* Ensure links are visible */
@@ -626,7 +646,7 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .resume-container {
     padding: 1rem 0.5rem;
   }
@@ -666,7 +686,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .resume-header .name {
     font-size: 1.75rem;
   }
