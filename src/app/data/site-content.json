@@ -4,7 +4,7 @@
     "title": "Engineering Manager",
     "location": "Jakarta, Indonesia · Open to relocation",
     "photo": "/self-formal.png",
-    "summary": "Engineering Manager with 8+ years in software engineering and 5+ years leading teams, who stays hands-on in architecture system design and coding. Track record of designing complex distributed, event-driven systems (Kafka, Redis) and scaling platforms to serve millions of users at high reliability — while growing high-performing teams and driving technical strategy across business-critical, HRIS, and government-scale applications.",
+    "summary": "Engineering Manager with 9+ years in software engineering and 5+ years leading teams, who stays hands-on in architecture system design and coding. Track record of designing complex distributed, event-driven systems (Kafka, Redis) and scaling platforms to serve millions of users at high reliability — while growing high-performing teams and driving technical strategy across business-critical, HRIS, and government-scale applications.",
     "contact": {
       "email": "agusdhito@gmail.com",
       "linkedinUrl": "https://www.linkedin.com/in/agustinus-ardhito/",
@@ -47,9 +47,9 @@
       "dateLabel": "Jun 2025 - Present",
       "summary": "Leading and growing a team of 10 (Backend, Frontend, Solution Engineer), driving excellency of performance and reliability for Mekari Talenta's HRIS across 50,000+ B2B companies and third-party integrations.",
       "achievements": [
-        "Spearheading the development using AI (Claude, ChatGPT, Copilot) to increase productivity by 3-5x faster, deploying production ready platform, and create a governance process to not compromising software quality",
-        "Taking charge on the development of Learning Management System using AI (Claude) by just 4 months (previously project is taking 1.5 years and still counting)",
-        "Maintaining & improving financial-related & Payroll Disbursement system by 12x faster by implementing a new architecture",
+        "Spearheading the development using AI (Claude, ChatGPT, Copilot) to increase productivity from 2 weeks to 4 days (3-5x faster), deploying production ready platform, and create a governance process to not compromising software quality",
+        "Taking charge on the development of Learning Management System using AI (Claude) in just 4 months (previously project is taking 1.5 years and still counting)",
+        "Maintaining & improving financial-related & Payroll Disbursement system from 30 minutes to 2.5 minutes (12x faster) by implementing a new architecture",
         "Collaborating through cross-functional teams such as Product, Design, Infra, Data, Security, QA, Commercial, Technical Supports, and fostering collaborations with external partners",
         "Leading incident responses & managements, improving system reliability through automation, alerting, and monitoring with Datadog, Grafana, Prometheus, and Playwright"
       ]
@@ -82,7 +82,7 @@
       "summary": "Led and grew a cross-functional team of 7+ across Backend, Frontend, Android, and iOS.",
       "achievements": [
         "Drove architecture and system-design decisions for distributed, and well-established SaaS & PaaS platform serving 5+ million daily active users",
-        "Maintaining & improving OAuth, User Account, and User Authentication (OTP, Password) systems using new architecture design to make it 10x faster and reducing Single Point of Failures",
+        "Maintaining & improving OAuth, User Account, and User Authentication (OTP, Password) systems using new architecture design from 3000 ms to 300 ms (10x faster) and reducing Single Point of Failures",
         "Spearheaded security and compliance improvements, including incident response & mitigation that is related to user & company financial loss",
         "Collaborated with all teams across the company to help guide & supervise technical & architecture decisions, maintaining the platform to have 99,99% uptime",
         "Reduced production incidents from 2-3 per week to roughly 1 per month through improved monitoring and testing through automation, alerting and monitoring with Datadog, Grafana, and ELK stack"
