@@ -129,6 +129,7 @@ export default function ResumePage() {
                   company={experience.company}
                   date={experience.dateLabel}
                   logo_url={experience.logo_url}
+                  summary={experience.summary}
                   achievements={experience.achievements}
                 />
               ))}

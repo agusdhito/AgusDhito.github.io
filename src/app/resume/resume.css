@@ -292,6 +292,14 @@
   font-weight: 500;
 }
 
+.experience-summary {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #444;
+  margin: 0 0 0.65rem 0;
+  font-weight: 500;
+}
+
 .achievements {
   margin: 0;
   padding-left: 1.25rem;
@@ -358,6 +366,14 @@
 }
 
 @media print {
+
+  /* System fonts keep every heading and body character mapped as searchable,
+     copyable Unicode text in browser-generated PDFs. */
+  .resume-container,
+  .resume-container * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-variant-ligatures: none !important;
+  }
 
   /* Hide print button, navigation, footer and all UI elements */
   .no-print,
@@ -433,6 +449,8 @@
   .resume-header .title {
     font-size: 11pt !important;
     margin: 0 0 0.12rem 0 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
   }
 
   .resume-header .location {
@@ -560,7 +578,7 @@
   .experience-item {
     margin-bottom: 0.85rem !important;
     padding-bottom: 0.7rem !important;
-    break-inside: avoid;
+    break-inside: auto;
     border-bottom: 1px solid #e0e0e0;
   }
 
@@ -605,15 +623,24 @@
     font-size: 8.5pt !important;
   }
 
+  .experience-summary {
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+    margin: 0 0 0.35rem 0 !important;
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
   .achievements {
     margin: 0 !important;
     padding-left: 0.95rem !important;
   }
 
   .achievements li {
-    font-size: 9.5pt !important;
-    line-height: 1.45 !important;
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
     margin-bottom: 0.25rem !important;
+    break-inside: avoid;
   }
 
   .achievements li:last-child {

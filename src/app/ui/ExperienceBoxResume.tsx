@@ -5,6 +5,7 @@ interface ExperienceBoxResumeProps {
   company: string;
   date: string;
   logo_url?: string;
+  summary?: string;
   achievements: string[];
 }
 
@@ -13,6 +14,7 @@ export default function ExperienceBoxResume({
   company,
   date,
   logo_url,
+  summary,
   achievements
 }: ExperienceBoxResumeProps) {
   return (
@@ -35,6 +37,7 @@ export default function ExperienceBoxResume({
         </div>
         <p className="date">{date}</p>
       </div>
+      {summary && <p className="experience-summary">{summary}</p>}
       <ul className="achievements">
         {achievements.map((achievement, index) => (
           <li key={index}>{achievement}</li>

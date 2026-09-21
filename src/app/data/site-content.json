@@ -1,10 +1,10 @@
 {
   "profile": {
     "name": "Agustinus Ardhito Vedoputro",
-    "title": "Engineering Manager",
+    "title": "Engineering Manager | Distributed Systems & Platform Reliability",
     "location": "Jakarta, Indonesia · Open to relocation",
     "photo": "/self-formal.png",
-    "summary": "Engineering Manager with 9+ years in software engineering and 5+ years leading teams, who stays hands-on in architecture system design and coding. Track record of designing complex distributed, event-driven systems (Kafka, Redis) and scaling platforms to serve millions of users at high reliability — while growing high-performing teams and driving technical strategy across business-critical, HRIS, and government-scale applications.",
+    "summary": "Engineering Manager with 9+ years of software engineering experience and 5+ years leading engineering teams. Combines hands-on expertise in software architecture, system design, and coding with a track record of building complex distributed and event-driven systems using technologies such as Kafka and Redis. Experienced in scaling highly reliable platforms to millions of users, developing high-performing teams, and shaping technical strategy for business-critical HRIS and public-sector applications.",
     "contact": {
       "email": "agusdhito@gmail.com",
       "linkedinUrl": "https://www.linkedin.com/in/agustinus-ardhito/",
@@ -16,12 +16,30 @@
     }
   },
   "skills": [
-    { "category": "Programming Languages", "items": ["Go", "Ruby", "Java", "PHP", "TypeScript", "JavaScript", "Python"] },
-    { "category": "Frameworks", "items": ["Ruby on Rails", "React", "Next.js", "PHP Yii"] },
-    { "category": "Databases", "items": ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Cassandra"] },
-    { "category": "DevOps & Tools", "items": ["Docker", "Kubernetes", "GCP", "Alicloud", "Git", "BitBucket", "Gitlab", "CI/CD", "Helm Chart", "Grafana", "Datadog"] },
-    { "category": "Architecture & Leadership", "items": ["System Design", "Distributed Systems", "SaaS/PaaS", "Team Management", "Project Delivery & Communication", "Agile/Scrum", "Mentoring"] },
-    { "category": "Languages (Spoken)", "items": ["English (Professional)", "Indonesian (Native)"] }
+    {
+      "category": "Programming Languages",
+      "items": ["Go", "Ruby", "Java", "PHP", "TypeScript", "JavaScript", "Python"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["Ruby on Rails", "React", "Next.js", "Yii"]
+    },
+    {
+      "category": "Databases",
+      "items": ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Cassandra"]
+    },
+    {
+      "category": "Cloud, DevOps & Observability",
+      "items": ["Docker", "Kubernetes", "Google Cloud Platform", "Alibaba Cloud", "Git", "Bitbucket", "GitLab", "CI/CD", "Helm", "Grafana", "Datadog"]
+    },
+    {
+      "category": "Architecture & Leadership",
+      "items": ["System Design", "Distributed Systems", "SaaS/PaaS", "Engineering Management", "Technical Strategy", "Project Delivery", "Stakeholder Communication", "Agile/Scrum", "Mentoring"]
+    },
+    {
+      "category": "Languages",
+      "items": ["English (Professional Working Proficiency)", "Indonesian (Native)"]
+    }
   ],
   "education": [
     {
@@ -32,9 +50,9 @@
     }
   ],
   "keyAchievements": [
-    "Mekari Talenta : Successfully migrated Payroll Disbursement related services from monolith to microservices, improving performance by 12x and reducing Single Point of Failures",
-    "Govtechedu : Built a data visualization platform using startups best practices on public sector, serving 500,000+ school principals and 5+ million teachers across Indonesia",
-    "Bukalapak : Scaled systems to support 5+ million daily active users, 10000+ RPS with 99.99% uptime"
+    "Mekari Talenta: Led the migration of payroll disbursement services from a monolith to microservices, reducing processing time from 30 minutes to 2.5 minutes and addressing single points of failure.",
+    "GovTechEdu: Built a public-sector data visualization platform using modern engineering practices, serving 500,000+ schools and 5+ million users across Indonesia.",
+    "Bukalapak: Scaled systems supporting 5+ million daily active users and 10,000+ requests per second while maintaining 99.99% uptime."
   ],
   "experiences": [
     {
@@ -45,13 +63,13 @@
       "start": "2025-06",
       "end": null,
       "dateLabel": "Jun 2025 - Present",
-      "summary": "Leading and growing a team of 10 (Backend, Frontend, Solution Engineer), driving excellency of performance and reliability for Mekari Talenta's HRIS across 50,000+ B2B companies and third-party integrations.",
+      "summary": "Lead and develop a 10-person team comprising backend engineers, frontend engineers, and a solutions engineer. Drive performance, reliability, and delivery for Mekari Talenta's HRIS platform, which serves 50,000+ B2B customers and integrates with external partners.",
       "achievements": [
-        "Spearheading the development using AI (Claude, ChatGPT, Copilot) to increase productivity from 2 weeks to 4 days (3-5x faster), deploying production ready platform, and create a governance process to not compromising software quality",
-        "Taking charge on the development of Learning Management System using AI (Claude) in just 4 months (previously project is taking 1.5 years and still counting)",
-        "Maintaining & improving financial-related & Payroll Disbursement system from 30 minutes to 2.5 minutes (12x faster) by implementing a new architecture",
-        "Collaborating through cross-functional teams such as Product, Design, Infra, Data, Security, QA, Commercial, Technical Supports, and fostering collaborations with external partners",
-        "Leading incident responses & managements, improving system reliability through automation, alerting, and monitoring with Datadog, Grafana, Prometheus, and Playwright"
+        "Introduced AI-assisted development workflows using Claude, ChatGPT, and GitHub Copilot, reducing selected delivery cycles from two weeks to four days while establishing governance to maintain production quality.",
+        "Led the AI-assisted development of a Learning Management System, delivering it in four months after the previous approach had remained incomplete for 18 months.",
+        "Led the re-architecture of financial and payroll disbursement systems, reducing processing time from 30 minutes to 2.5 minutes.",
+        "Lead cross-functional collaboration across Product, Design, Infrastructure, Data, Security, QA, Commercial, and Technical Support teams, while coordinating with external partners.",
+        "Lead incident response and reliability improvements through automation, alerting, monitoring, and testing with Datadog, Grafana, Prometheus, and Playwright."
       ]
     },
     {
@@ -62,13 +80,13 @@
       "start": "2022-04",
       "end": "2024-12",
       "dateLabel": "Apr 2022 - Dec 2024",
-      "summary": "Led and grew a team of 10+ (Architect, Backend, Frontend), building and maintaining a data visualization platform, and working across multiple functions across government institutions.",
+      "summary": "Led and developed a team of 10+ architects, backend engineers, and frontend engineers responsible for building and operating a data visualization platform in collaboration with multiple government institutions.",
       "achievements": [
-        "Spearheaded development of a data visualization platform serving 500,000+ schools and 5+ million users with high availability using Grafana, Prometheus",
-        "Designed, distributed, event-driven architecture using Kafka & GCP Pub/Sub to achieve the minimum SLO of 99,99% uptime and < 500ms latency for 95% of requests",
-        "Drove technical strategy and architecture decisions, aligning with multiple stakeholders across government institutions",
-        "Improved team delivery velocity through agile process optimization (Scrum) and individual mentoring programme",
-        "Established new engineering best practices for government institutions such as automated testing, CI/CD Pipelines (Gitlab), Docker, Kubernetes, and GCP"
+        "Led the development of a highly available data visualization platform serving 500,000+ schools and 5+ million users, supported by Grafana and Prometheus.",
+        "Designed a distributed, event-driven architecture using Kafka and Google Cloud Pub/Sub that met an SLO of 99.99% uptime and maintained p95 latency below 500 ms.",
+        "Drove technical strategy and architecture decisions in alignment with stakeholders across multiple government institutions.",
+        "Improved team delivery through Scrum process optimization and individual mentoring.",
+        "Introduced engineering best practices for government platforms, including automated testing, GitLab CI/CD pipelines, Docker, Kubernetes, and Google Cloud Platform."
       ]
     },
     {
@@ -79,13 +97,13 @@
       "start": "2021-01",
       "end": "2022-03",
       "dateLabel": "Jan 2021 - Mar 2022",
-      "summary": "Led and grew a cross-functional team of 7+ across Backend, Frontend, Android, and iOS.",
+      "summary": "Led and developed a cross-functional team of 7+ backend, frontend, Android, and iOS engineers.",
       "achievements": [
-        "Drove architecture and system-design decisions for distributed, and well-established SaaS & PaaS platform serving 5+ million daily active users",
-        "Maintaining & improving OAuth, User Account, and User Authentication (OTP, Password) systems using new architecture design from 3000 ms to 300 ms (10x faster) and reducing Single Point of Failures",
-        "Spearheaded security and compliance improvements, including incident response & mitigation that is related to user & company financial loss",
-        "Collaborated with all teams across the company to help guide & supervise technical & architecture decisions, maintaining the platform to have 99,99% uptime",
-        "Reduced production incidents from 2-3 per week to roughly 1 per month through improved monitoring and testing through automation, alerting and monitoring with Datadog, Grafana, and ELK stack"
+        "Led architecture and system design for a mature, distributed SaaS and PaaS platform serving 5+ million daily active users.",
+        "Re-architected OAuth, user account, and authentication services, reducing response time from 3,000 ms to 300 ms and addressing single points of failure.",
+        "Led security and compliance improvements, including incident response and mitigation for events with potential customer and company financial impact.",
+        "Partnered with engineering teams across the company to guide technical and architecture decisions while maintaining 99.99% platform uptime.",
+        "Reduced production incidents from two to three per week to approximately one per month by strengthening automated testing, alerting, and monitoring with Datadog, Grafana, and the ELK Stack."
       ]
     },
     {
@@ -96,12 +114,12 @@
       "start": "2017-06",
       "end": "2020-12",
       "dateLabel": "Jun 2017 - Dec 2020",
-      "summary": "Built and maintained the core Account & Auth system for 40M+ users at 50,000+ RPS.",
+      "summary": "Built and operated core account and authentication systems serving 40+ million users and handling 50,000+ requests per second.",
       "achievements": [
-        "Developed and maintained core authentication and account systems handling 50,000+ RPS",
-        "Built a scalable microservices architecture serving 40+ million users",
-        "Optimized database queries and caching strategies, reducing response time from 3-5s to 100-200ms",
-        "Implemented security best practices including OAuth2, JWT, and multi-factor authentication"
+        "Developed and maintained core authentication and account services handling 50,000+ requests per second.",
+        "Built scalable microservices supporting 40+ million users.",
+        "Optimized database queries and caching strategies, reducing response time from 3-5 seconds to 100-200 ms.",
+        "Implemented security practices including OAuth 2.0, JWT, and multi-factor authentication."
       ]
     }
   ]
