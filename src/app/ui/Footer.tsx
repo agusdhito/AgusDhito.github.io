@@ -1,35 +1,13 @@
-import {
-    Box,
-    Typography
-} from "@mui/material"
+import siteContent from '@/app/data/site-content.json';
+import styles from './Portfolio.module.css';
 
 export function Footer() {
-    return (
-        <>
-            <Box
-            sx={{
-                backgroundColor: "black",
-                width: "100%",
-                height: "100px"
-            }}
-            >
-                <Box
-                sx={{
-                    padding: "4px",
-                    margin: "4px"
-                }}
-                >
-                    <Typography
-                    sx={{
-                        color: "white"
-                    }}
-                    >
-                        Copyright (c) 2025
-                    </Typography>
-                </Box>
-                
-                
-            </Box>
-        </>
-    )
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.footerInner}>
+        <p>© {new Date().getFullYear()} {siteContent.profile.name}</p>
+        <p>Software engineering & technical leadership</p>
+      </div>
+    </footer>
+  );
 }
