@@ -45,3 +45,5 @@ next-env.d.ts
 
 *Zone.Identifier
 *mshield
+# Local application resumes
+/generated-resumes/

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "resume:technical-lead": "node scripts/generate-technical-lead-resume.mjs",
+    "resume:technical-lead:pdf": "node scripts/generate-technical-lead-resume.mjs --pdf",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
