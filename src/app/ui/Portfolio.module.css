@@ -146,6 +146,7 @@
 }
 
 .impactList {
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
@@ -214,6 +215,13 @@
 
 .details {
   margin-top: 16px;
+}
+
+.featuredImpact {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  color: var(--text);
 }
 
 .details summary {
@@ -332,7 +340,7 @@
   }
 
   .portrait {
-    width: min(100%, 320px);
+    width: min(100%, 180px);
     justify-self: center;
   }
 

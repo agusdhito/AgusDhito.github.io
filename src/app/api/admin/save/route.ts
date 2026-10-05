@@ -7,8 +7,7 @@ import path from 'path';
  *
  * This route only exists while a Next.js server is running (i.e. `npm run dev`).
  * The deployed GitHub Pages site is a static export with no server, so this
- * endpoint is stripped before the production build — see the "Remove local-only
- * API routes" step in .github/workflows/nextjs.yml.
+ * endpoint has no running server to handle requests in production.
  *
  * ADMIN_PASSWORD is read from .env.local, server-side only. It is never sent to
  * or readable from the browser bundle.

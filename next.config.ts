@@ -1,16 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // UNCOMMENT THIS IF YOU WANT TO CREATE OUTPUT STATIC FILES
-  // output: 'export',
-  // distDir: 'dist',
-
-};
-module.exports = {
+  // GitHub Pages sets this flag; local verification uses the same export config.
+  output: process.env.STATIC_EXPORT === 'true' ? 'export' : undefined,
   images: {
     formats: ['image/webp'],
+    unoptimized: true,
   },
-}
+};
 
 export default nextConfig;

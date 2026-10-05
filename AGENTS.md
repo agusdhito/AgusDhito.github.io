@@ -78,11 +78,14 @@ When drafting a letter, follow these rules:
 ## Commands
 
 - `npm run dev` — local dev server (Turbopack) at http://localhost:3000
-- `npm run build` — production build; static HTML is emitted to `./out` (the folder GitHub Pages serves)
+- `npm run build` — regenerate `public/cv.pdf` using installed Chrome/Chromium, then build Next.js. `STATIC_EXPORT=true npm run build` emits static HTML to `./out` (the folder GitHub Pages serves).
 - `npm run start` — serve the production build
 - `npm run lint` — Next.js ESLint
+- `npm run resume:pdf` — regenerate the public Engineering Manager CV from current content
+- `npm run resume:technical-lead:pdf` — generate a local Technical Lead application PDF
+- See `scripts/RESUMES.md` for HTML generation and browser requirements.
 
-There is no test suite in this repo.
+There is no test suite in this repo. Check PDF text extraction and pagination when changing resume content or layout.
 
 ## Architecture
 
@@ -91,7 +94,7 @@ There is no test suite in this repo.
 `src/app/data/site-content.json` is the single source of truth for profile, skills, education, key achievements, and work experiences. Three consumers read it directly via `import siteContent from '@/app/data/site-content.json'`:
 
 - `src/app/ui/Landing.tsx` — homepage (rendered by `src/app/page.tsx`)
-- `src/app/resume/page.tsx` — printable resume view (uses `window.print()` for PDF export)
+- `src/app/resume/page.tsx` — printable resume view (uses `window.print()` for PDF export); shares `src/app/data/resume-template.mjs` with the npm PDF generator
 - `src/app/admin/page.tsx` — the editor UI
 
 The `SiteContent` TypeScript shape is **redeclared** at the top of `admin/page.tsx`; when changing the JSON schema, keep that interface (and the consuming components) in sync — there is no shared type module.
@@ -102,15 +105,15 @@ The `SiteContent` TypeScript shape is **redeclared** at the top of `admin/page.t
 
 - The API route reads `ADMIN_PASSWORD` from `.env.local` (server-side only, never bundled to the browser). Set this locally to use the editor.
 - Editing the site is a two-step flow: save via `/admin` → **commit and push** the changed `site-content.json`. The live site does not persist edits; the JSON in git is what deploys.
-- Note: the `route.ts` header comment references a build step that strips this route for production, but the actual workflow does not contain it. The route simply has no effect once statically exported (no server), so it is harmless but non-functional on GitHub Pages.
+- The POST-only route has no effect once statically exported (no server), so saving is non-functional on GitHub Pages.
 
 ### Deployment
 
-`.github/workflows/nextjs.yml` builds on every push to `main` and deploys `./out` to GitHub Pages. Static export is enabled by the `actions/configure-pages` step (`static_site_generator: next`), which injects the export config and `basePath` at build time — **not** by `next.config.ts` (where `output: 'export'` is left commented out). Do not rely on local `next build` producing `./out` unless that config is uncommented.
+`.github/workflows/nextjs.yml` builds on every push to `main` and deploys `./out` to GitHub Pages. It runs `npm run build` (or the detected package manager equivalent) with `STATIC_EXPORT=true`, enabling `output: 'export'` in `next.config.ts`. The prebuild regenerates `public/cv.pdf` using installed Chrome/Chromium. Image optimisation is disabled in `next.config.ts`. The user site uses the domain root, with no base path. Local export verification uses the same environment flag; normal local builds do not emit `./out`.
 
 ### Styling & assets
 
-- Tailwind CSS v4 (via `@tailwindcss/postcss`) plus MUI (`@mui/material`, Emotion) plus per-page plain CSS (`admin/admin.css`, `resume/resume.css`).
+- Tailwind CSS v4 (via `@tailwindcss/postcss`) plus MUI (`@mui/material`, Emotion), portfolio CSS modules, admin CSS, and shared scoped resume styles in `resume-template.mjs`. Public pages and PDFs use local system fonts.
 - Images and logos live in `/public` and are referenced by path from `site-content.json` (e.g. `logo_url`, `profile.photo`). Because the deployed site is a static export, `next/image` optimization is disabled by GitHub Pages config.
 
 ### Legacy / ignore

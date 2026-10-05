@@ -15,10 +15,11 @@ function ExperienceEntry({ experience }: { experience: Experience }) {
         <p className={styles.date}>{experience.dateLabel}</p>
       </div>
       <p>{experience.summary}</p>
+      <p className={styles.featuredImpact}>{experience.achievements[0]}</p>
       <details className={styles.details}>
-        <summary>Achievements</summary>
+        <summary>More achievements</summary>
         <ul>
-          {experience.achievements.map((achievement) => (
+          {experience.achievements.slice(1).map((achievement) => (
             <li key={achievement}>{achievement}</li>
           ))}
         </ul>
@@ -34,12 +35,13 @@ export default function Landing() {
     <main className={styles.portfolio}>
       <header className={styles.hero}>
         <div>
-          <p className={styles.eyebrow}>Software engineering · Leadership · System Design</p>
+          <p className={styles.eyebrow}>Technical leadership · System design · Hands-on engineering</p>
           <h1>{profile.name}</h1>
           <p className={styles.role}>{profile.title}</p>
           <p className={styles.location}>{profile.location}</p>
           <div className={styles.actions}>
             <Link className={styles.primaryLink} href="/resume">View resume <span aria-hidden="true">↗</span></Link>
+            <a className={styles.secondaryLink} href="/cv.pdf" download>Download CV</a>
             <a className={styles.secondaryLink} href={`mailto:${profile.contact.email}`}>Get in touch</a>
           </div>
         </div>
@@ -58,12 +60,13 @@ export default function Landing() {
             <li key={achievement}>{achievement}</li>
           ))}
         </ul>
+        <Link className={styles.textLink} href="/products">Explore engineering work <span aria-hidden="true">→</span></Link>
       </section>
 
       <div className={styles.contentGrid}>
         <section className={styles.section} aria-labelledby="experience-title">
           <h2 id="experience-title">Experience</h2>
-          {experiences.map((experience) => (
+          {[...experiences].sort((a, b) => b.start.localeCompare(a.start)).map((experience) => (
             <ExperienceEntry key={experience.id} experience={experience} />
           ))}
           <Link className={styles.textLink} href="/resume">View full resume <span aria-hidden="true">→</span></Link>

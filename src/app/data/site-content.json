@@ -4,7 +4,7 @@
     "title": "Engineering Manager | Distributed Systems & Platform Reliability",
     "location": "Jakarta, Indonesia · Open to relocation",
     "photo": "/self-formal.png",
-    "summary": "Engineering Manager with 9+ years of software engineering experience and 5+ years leading engineering teams. Combines hands-on expertise in system design & architecture across REST API, display with web or mobile pages, and coding with a track record of building complex and reliable systems using technologies like Golang, Ruby, Redis, and Kafka. Experienced in scaling highly reliable platforms to millions of users, developing high-performing teams, and shaping technical strategy for business-critical applications.",
+    "summary": "Engineering Manager with 9+ years of software engineering experience and 5+ years leading teams. Remains hands-on in architecture, system design, and coding, with experience spanning backend services, REST APIs, and web applications using Go, Ruby, React, Redis, and Kafka. Leads teams of 7–10+ engineers delivering critical business platforms, with measurable improvements in processing time, latency, and reliability at a scale of millions of users.",
     "contact": {
       "email": "agusdhito@gmail.com",
       "linkedinUrl": "https://www.linkedin.com/in/agustinus-ardhito/",
@@ -29,6 +29,10 @@
       "items": ["PostgreSQL", "MySQL", "Redis", "MongoDB", "Cassandra"]
     },
     {
+      "category": "Messaging & APIs",
+      "items": ["Kafka", "Google Cloud Pub/Sub", "REST APIs", "OAuth 2.0", "JWT"]
+    },
+    {
       "category": "Cloud, DevOps & Observability",
       "items": ["Docker", "Kubernetes", "Google Cloud Platform", "Alibaba Cloud", "Git", "Bitbucket", "GitLab", "CI/CD", "Helm", "Grafana", "Datadog"]
     },
@@ -51,8 +55,8 @@
   ],
   "keyAchievements": [
     "Mekari Talenta: Led the migration of payroll disbursement services from a monolith to microservices, reducing processing time from 30 minutes to 2.5 minutes and addressing single points of failure.",
-    "GovTechEdu: Built a public-sector data visualization platform using modern engineering practices, serving 500,000+ schools and 5+ million users across Indonesia.",
-    "Bukalapak: Scaled systems supporting 5+ million daily active users and 10,000+ requests per second while maintaining 99.99% uptime."
+    "GovTechEdu: Led the development of a public-sector data visualization platform serving 500,000+ schools and 5+ million users, with 99.99% uptime and p95 latency below 500 ms.",
+    "Bukalapak: Re-architected authentication and account services, reducing response time from 3,000 ms to 300 ms and addressing single points of failure on a platform serving 5+ million daily active users."
   ],
   "experiences": [
     {
@@ -65,9 +69,9 @@
       "dateLabel": "Jun 2025 - Present",
       "summary": "Lead and develop a 10-person team comprising backend engineers, frontend engineers, and a solutions engineer. Drive performance, reliability, and delivery for Mekari Talenta's HRIS platform, which serves 50,000+ B2B customers and integrates with external partners.",
       "achievements": [
+        "Led the re-architecture of financial and payroll disbursement systems, reducing processing time from 30 minutes to 2.5 minutes.",
         "Introduced AI-assisted development workflows using Claude, ChatGPT, and GitHub Copilot, reducing selected delivery cycles from two weeks to four days while establishing governance to maintain production quality.",
         "Led the AI-assisted development of a Learning Management System, delivering it in four months after the previous approach had remained incomplete for 18 months.",
-        "Led the re-architecture of financial and payroll disbursement systems, reducing processing time from 30 minutes to 2.5 minutes.",
         "Lead cross-functional collaboration across Product, Design, Infrastructure, Data, Security, QA, Commercial, and Technical Support teams, while coordinating with external partners.",
         "Lead incident response and reliability improvements through automation, alerting, monitoring, and testing with Datadog, Grafana, Prometheus, and Playwright."
       ]
@@ -99,8 +103,8 @@
       "dateLabel": "Jan 2021 - Mar 2022",
       "summary": "Led and developed a cross-functional team of 7+ backend, frontend, Android, and iOS engineers.",
       "achievements": [
-        "Led architecture and system design for a mature, distributed SaaS and PaaS platform serving 5+ million daily active users.",
         "Re-architected OAuth, user account, and authentication services, reducing response time from 3,000 ms to 300 ms and addressing single points of failure.",
+        "Led architecture and system design for a mature, distributed SaaS and PaaS platform serving 5+ million daily active users.",
         "Led security and compliance improvements, including incident response and mitigation for events with potential customer and company financial impact.",
         "Partnered with engineering teams across the company to guide technical and architecture decisions while maintaining 99.99% platform uptime.",
         "Reduced production incidents from two to three per week to approximately one per month by strengthening automated testing, alerting, and monitoring with Datadog, Grafana, and the ELK Stack."
@@ -116,9 +120,9 @@
       "dateLabel": "Jun 2017 - Dec 2020",
       "summary": "Built and operated core account and authentication systems serving 40+ million users and handling 50,000+ requests per second.",
       "achievements": [
+        "Optimized database queries and caching strategies, reducing response time from 3-5 seconds to 100-200 ms.",
         "Developed and maintained core authentication and account services handling 50,000+ requests per second.",
         "Built scalable microservices supporting 40+ million users.",
-        "Optimized database queries and caching strategies, reducing response time from 3-5 seconds to 100-200 ms.",
         "Implemented security practices including OAuth 2.0, JWT, and multi-factor authentication."
       ]
     }
